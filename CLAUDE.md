@@ -2,68 +2,80 @@
 
 Tu sei il dev del progetto. Paolo è il cervello strategico. Non fare domande di progetto — quelle le gestisce lui nella chat Claude principale.
 
-Workspace di progetto con roadmap, decisioni, parking lot:
+Workspace di progetto con brief completo, roadmap, intelligence commerciale:
 https://github.com/Paolocesareo/Paolo/blob/master/advlink.md
+
+**Leggilo prima di iniziare. Contiene tutto il contesto strategico.**
 
 ---
 
-## Fase attuale: 1 — Sito pubblico
+## Fase attuale: 1 — Sito pubblico vetrina
 
-Solo marketing. Niente area cliente, niente tracking, niente integrazione GAM. Quelle sono fasi successive.
+Solo marketing. Niente piattaforma tecnica, niente dashboard, niente integrazione GAM. Quelle sono fasi 2-3.
 
 ## Stack vincolante
 
 - Next.js 14 App Router + TypeScript
 - Tailwind CSS
-- Deploy target: Netlify
-- Quando servirà: Supabase (già nel piano, ma NON in fase 1)
+- Deploy target: Netlify (config già presente in `netlify.toml`)
+- Quando servirà: Supabase (fase 2, NON ora)
+
+## Posizionamento del sito (CRITICO)
+
+Advlink non si presenta come "ennesima ad-tech". Il messaging deve essere chiaro:
+
+- **"Da editori, per editori"** — non società tech esterna, ma piattaforma nata dentro un gruppo editoriale (ex-Netweek)
+- **Trasparenza commissioni** — esplicita la commissione, mentre il mercato è opaco
+- **Specializzazione editoria locale e regionale** — il segmento dove i grandi player (Dorvan ecc.) non operano
+- **Integrazione nativa Google Ad Manager** — credibilità tecnica
+- **Tre prodotti chiari**: Piattaforma (header bidding + dashboard) · Reach+ (raccolta) · Analytics (revenue real-time)
+
+Tono: martech, sobrio, professionale. Mai "agenzia creativa", mai "rivoluzionario".
 
 ## Task iniziale
 
-1. **Inizializza** Next.js 14 (App Router, TypeScript, Tailwind, ESLint) direttamente nella root del repo
+1. **Inizializza** Next.js 14 nella root del repo (App Router, TypeScript, Tailwind, ESLint)
 2. **Setup base:**
    - `src/app/layout.tsx` con Header + Footer
-   - Tailwind config con palette brand sobria (neutri + 1 accent color — confermare con Paolo in chat)
+   - Tailwind config con palette brand (Paolo confermerà accent color in chat — default: blu martech `#1e40af` su neutri grigio/bianco)
    - Font: Inter da `next/font/google`
 3. **Pagine** (tutte statiche in fase 1):
-   - `/` — Home: hero, value prop editori, 3 sezioni servizi, CTA contatti
-   - `/editori` — target editori: cosa offriamo, integrazione Google Ad Manager, trasparenza
-   - `/inserzionisti` — target brand: performance in ambienti editoriali premium
-   - `/chi-siamo` — team, missione
-   - `/contatti` — form (in fase 1 invia via email con Resend o simile; Supabase arriva in fase 2)
-
-## Ispirazione design
-
-- **dorvan.it** — tono martech, trasparenza, editoria
-- Sobrio, professionale, non da agenzia creativa
-- Mobile first
+   - `/` — Home: hero, value prop editori, 3 sezioni servizi (Piattaforma · Reach+ · Analytics), CTA contatti
+   - `/editori` — target editori: integrazione GAM, trasparenza commissioni, focus locale, dashboard real-time
+   - `/inserzionisti` — target brand: performance in ambienti editoriali premium, CPC/CPCV
+   - `/chi-siamo` — nati dentro un gruppo editoriale, missione, team
+   - `/contatti` — form (in fase 1 invia via email con Resend; Supabase arriva in fase 2)
 
 ## Regole di codice
 
 - TypeScript strict
 - Componenti in `src/components`, pagine in `src/app`
-- SEO: `metadata` export in ogni pagina, sitemap, robots.txt
+- SEO: `metadata` export in ogni pagina, sitemap.xml, robots.txt
 - Niente Shadcn/ui se basta Tailwind puro
-- Accessibilità minima: tag semantici, alt, contrasti ok
+- Accessibilità minima: tag semantici, alt, contrasti AA
+- Mobile first
 
 ## Deploy
 
 `netlify.toml` già presente nel repo.
+Plugin: `@netlify/plugin-nextjs` (va installato come devDependency).
 
-Plugin: `@netlify/plugin-nextjs` (già dichiarato nel toml — va installato in locale come devDependency).
+## Fase 2 (NON svilupparla ora — è solo per contesto)
 
-## Fase 2 (NON svilupparla ora)
+Piattaforma tecnica con MVP in 6 settimane:
+- Auth Supabase per editori (RLS per isolamento dati)
+- Dashboard EditorView-like (revenue, CPM, impression, fill rate, payable pageview per testata)
+- Integrazione Google Ad Manager via API + Service Account
+- Prebid.js wrapper proprietario, 3 SSP iniziali (Magnite, Index Exchange, Pubmatic)
+- Tag Advlink servito da `cdn.advlink.it/s/{publisher}/adv.js`
+- Webhook SSP → Supabase per dati real-time
 
-- Auth Supabase per clienti editori
-- Dashboard metriche (click, revenue, payable pageview)
-- Integrazione Google Ad Manager via OAuth per cliente
-- Script JS proprietario `/tag.js` servito dal dominio
+## Fase 3 (NON svilupparla ora — solo contesto)
 
-## Fase 3 (NON svilupparla ora)
-
-- Endpoint ingest eventi del tag
-- Pannello admin per gestione clienti
+- Layer AI categorizzazione IAB contenuti
+- Revenue forecasting
+- Pannello admin gestione publisher
 
 ---
 
-Se serve una decisione strategica, scrivi a Paolo nella chat Claude — non prendere decisioni di architettura da solo.
+Se serve una decisione strategica o di posizionamento, scrivi a Paolo nella chat Claude principale — non improvvisare.
