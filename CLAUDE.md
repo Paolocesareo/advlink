@@ -1,6 +1,4 @@
-# CLAUDE.md — Brief Advlink per Claude Code
-
-Tu sei il dev del progetto. Paolo è il cervello strategico. Non fare domande di progetto — quelle le gestisce lui nella chat Claude principale.
+# CLAUDE.md — Brief Advlink
 
 Workspace di progetto con brief completo, roadmap, intelligence commerciale:
 https://github.com/Paolocesareo/Paolo/blob/master/advlink.md
@@ -9,7 +7,23 @@ https://github.com/Paolocesareo/Paolo/blob/master/advlink.md
 
 ---
 
-## Fase attuale: 1 — Sito pubblico vetrina
+## Sviluppo via team-dev
+
+Lo sviluppo di Advlink usa gli agenti specializzati del team-dev di Paolo (`team-dev/.claude/agents/`).
+
+**Per sviluppo full-stack** (sito, dashboard, integrazioni, Edge Functions, tag JS):
+→ usa `@advlink-dev`
+
+L'agente conosce già stack, palette brand, roadmap, conflitti tecnici e regole. Brief integrato.
+
+**Per testing end-to-end** (API, deploy Netlify, flussi reali):
+→ usa `@tester-qa` (generico riusabile)
+
+Per fase 1 bastano questi due. Per fase 2 (GAM + Prebid) valuteremo se creare un `advlink-adops` specialist.
+
+---
+
+## Fase corrente: 1 — Sito pubblico vetrina
 
 Solo marketing. Niente piattaforma tecnica, niente dashboard, niente integrazione GAM. Quelle sono fasi 2-3.
 
