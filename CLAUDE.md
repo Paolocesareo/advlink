@@ -37,8 +37,33 @@ Tono: martech, sobrio, professionale. Mai "agenzia creativa", mai "rivoluzionari
 1. **Inizializza** Next.js 14 nella root del repo (App Router, TypeScript, Tailwind, ESLint)
 2. **Setup base:**
    - `src/app/layout.tsx` con Header + Footer
-   - Tailwind config con palette brand (Paolo confermerà accent color in chat — default: blu martech `#1e40af` su neutri grigio/bianco)
+   - Tailwind config con palette brand rosso editoriale (vedi sotto)
    - Font: Inter da `next/font/google`
+
+### Palette brand (vincolante)
+
+```js
+// tailwind.config.ts → theme.extend.colors
+brand: {
+  50:  '#fef2f2',  // soft background per sezioni accent
+  100: '#fee2e2',  // tag/badge bg
+  600: '#dc2626',  // (riserva)
+  700: '#b91c1c',  // link, text accent, focus ring
+  800: '#991b1b',  // button primario, accent dominante
+  900: '#7f1d1d',  // hover button, dark accent
+}
+```
+
+Uso:
+- **Bottoni primari**: bg `brand.800`, hover `brand.900`, testo bianco
+- **Link e text accent**: `brand.700`
+- **Bordi e ring focus**: `brand.700`
+- **Background soft per sezioni**: `brand.50`
+- **Logo wordmark**: nero `slate-900`, con pallino accent `brand.800` accanto
+
+Neutri: usa Tailwind `slate` (slate-50 background, slate-900 testo body, slate-600 testo secondario, slate-200 bordi).
+
+Niente gradienti, niente shadow drammatici. Sobrio.
 3. **Pagine** (tutte statiche in fase 1):
    - `/` — Home: hero, value prop editori, 3 sezioni servizi (Piattaforma · Reach+ · Analytics), CTA contatti
    - `/editori` — target editori: integrazione GAM, trasparenza commissioni, focus locale, dashboard real-time
