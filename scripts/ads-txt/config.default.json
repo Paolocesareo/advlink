@@ -1,0 +1,73 @@
+{
+  "version": 1,
+  "description": "Default ads.txt config — sostituire gli account_id <<REPLACE_ME>> con quelli reali del publisher. I tag_id omessi producono righe ads.txt a 3 campi (validi IAB).",
+  "entries": [
+    {
+      "domain": "google.com",
+      "account_id": "<<REPLACE_ME>>",
+      "relationship": "DIRECT",
+      "tag_id": "f08c47fec0942fa0",
+      "comment": "Google AdSense / Ad Manager (tag_id IAB certified)"
+    },
+    {
+      "domain": "google.com",
+      "account_id": "<<REPLACE_ME>>",
+      "relationship": "RESELLER",
+      "tag_id": "f08c47fec0942fa0",
+      "comment": "Google via reseller"
+    },
+    {
+      "domain": "rubiconproject.com",
+      "account_id": "<<REPLACE_ME>>",
+      "relationship": "RESELLER",
+      "tag_id": "0bfd66d529a55807",
+      "comment": "Magnite (ex Rubicon) — tag_id IAB certified"
+    },
+    {
+      "domain": "pubmatic.com",
+      "account_id": "<<REPLACE_ME>>",
+      "relationship": "RESELLER",
+      "tag_id": "5d62403b186f2ace",
+      "comment": "PubMatic — tag_id IAB certified"
+    },
+    {
+      "domain": "indexexchange.com",
+      "account_id": "<<REPLACE_ME>>",
+      "relationship": "RESELLER",
+      "comment": "Index Exchange — tag_id omesso per safety, lascia riga a 3 campi"
+    },
+    {
+      "domain": "openx.com",
+      "account_id": "<<REPLACE_ME>>",
+      "relationship": "RESELLER",
+      "tag_id": "6a698e2ec38604c6",
+      "comment": "OpenX — tag_id IAB certified"
+    },
+    {
+      "domain": "appnexus.com",
+      "account_id": "<<REPLACE_ME>>",
+      "relationship": "RESELLER",
+      "tag_id": "f5ab79cb980f11d1",
+      "comment": "Xandr / AppNexus — tag_id IAB certified"
+    },
+    {
+      "domain": "smartadserver.com",
+      "account_id": "<<REPLACE_ME>>",
+      "relationship": "RESELLER",
+      "comment": "Equativ / Smart — tag_id omesso"
+    },
+    {
+      "domain": "criteo.com",
+      "account_id": "<<REPLACE_ME>>",
+      "relationship": "RESELLER",
+      "tag_id": "9fac4a4a87c2a44f",
+      "comment": "Criteo — tag_id IAB certified"
+    },
+    {
+      "domain": "advlink.it",
+      "account_id": "<<REPLACE_ME>>",
+      "relationship": "DIRECT",
+      "comment": "Advlink direct — tag_id da definire quando registriamo IAB seller ID"
+    }
+  ]
+}

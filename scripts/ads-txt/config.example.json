@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "description": "Config di esempio per ads-txt generator. Copia questo file, rinominalo (es. config-cliente-xyz.json) e sostituisci i placeholder con gli account_id reali forniti dai singoli SSP al publisher.",
+  "notes": [
+    "Ogni entry diventa una riga nel file ads.txt.",
+    "Campi obbligatori: domain (SSP), account_id (publisher id sullo SSP), relationship (DIRECT o RESELLER).",
+    "Campo opzionale: tag_id (Certification Authority ID, 16 char hex). Se omesso la riga sara a 3 campi (valida IAB).",
+    "Campo opzionale ma consigliato: comment (spiegazione leggibile, NON finisce nel file ads.txt, solo per leggibilita del JSON).",
+    "Ordine degli entries determina ordine delle righe nell'output."
+  ],
+  "entries": [
+    {
+      "domain": "google.com",
+      "account_id": "pub-1234567890123456",
+      "relationship": "DIRECT",
+      "tag_id": "f08c47fec0942fa0",
+      "comment": "Account Google Ad Manager del publisher — formato pub-<16 cifre>"
+    },
+    {
+      "domain": "rubiconproject.com",
+      "account_id": "25698",
+      "relationship": "RESELLER",
+      "tag_id": "0bfd66d529a55807",
+      "comment": "Seat ID numerico fornito da Magnite"
+    },
+    {
+      "domain": "advlink.it",
+      "account_id": "adv-0001",
+      "relationship": "DIRECT",
+      "comment": "Relazione diretta con Advlink — tag_id assente -> riga a 3 campi"
+    }
+  ]
+}
