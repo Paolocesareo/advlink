@@ -1,23 +1,24 @@
+import { Suspense } from 'react';
+import { LoginForm } from './LoginForm';
+
 export const metadata = {
-  title: 'Login — Advlink',
-  description: 'Accesso area riservata editori Advlink',
+  title: 'Login',
+  description: 'Accesso riservato al team Advlink',
 };
 
-export default function LoginPlaceholder() {
+export default function LoginPage() {
   return (
-    <main className="mx-auto max-w-3xl px-4 py-24 text-center">
-      <h1 className="text-3xl font-medium text-slate-900 mb-4">
-        Login — in arrivo
-      </h1>
-      <p className="text-slate-600 mb-8">
-        L&apos;autenticazione per editori sarà disponibile a breve.
-      </p>
-      <a
-        href="/"
-        className="inline-block bg-brand-800 hover:bg-brand-900 text-white px-6 py-3 rounded-md font-medium"
-      >
-        Torna alla home
-      </a>
+    <main className="mx-auto max-w-md px-4 py-20">
+      <div className="mb-10 text-center">
+        <div className="inline-flex items-center justify-center w-10 h-10 rounded bg-brand-800 text-white text-sm font-bold tracking-wider mb-4">
+          AL
+        </div>
+        <h1 className="text-2xl font-semibold text-slate-900">Advlink Admin</h1>
+        <p className="text-sm text-slate-500 mt-1">Accesso riservato al team</p>
+      </div>
+      <Suspense fallback={<div className="text-sm text-slate-500">Caricamento…</div>}>
+        <LoginForm />
+      </Suspense>
     </main>
   );
 }
