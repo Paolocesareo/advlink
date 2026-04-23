@@ -51,6 +51,10 @@ export default async function AdminLayout({
               <div className="text-[11px] text-slate-500">Admin Console</div>
             </div>
           </Link>
+          <nav className="hidden md:flex items-center gap-5 text-sm">
+            <Link href="/admin" className="text-slate-700 hover:text-slate-900 font-medium">Clienti</Link>
+            <Link href="/admin/network" className="text-slate-700 hover:text-slate-900 font-medium">Network Advlink</Link>
+          </nav>
           <div className="flex items-center gap-4 text-xs">
             <span className="text-slate-500">
               {member.display_name || user.email} · <span className="uppercase tracking-wide text-slate-400">{member.role}</span>

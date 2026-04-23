@@ -18,26 +18,67 @@ const STATUS_COLOR: Record<string, string> = {
   suspended: 'bg-red-100 text-red-900 border-red-300',
 };
 
+const NETWORK_STATUS_LABEL: Record<string, string> = {
+  not_started: 'Non iniziato',
+  applied: 'Richiesta inviata',
+  under_review: 'In revisione Google',
+  approved: 'Approvato',
+  operational: 'Operativo',
+};
+
 export default async function AdminHome() {
   const supabase = createClient();
 
-  const { data: publishers, error } = await supabase
-    .from('publishers')
-    .select('id, name, slug, status, commission_advlink, commission_publisher, onboarding, updated_at, sites(count)')
-    .order('updated_at', { ascending: false });
+  const [pubRes, netRes] = await Promise.all([
+    supabase
+      .from('publishers')
+      .select('id, name, slug, status, commission_advlink, commission_publisher, onboarding, updated_at, sites(count)')
+      .order('updated_at', { ascending: false }),
+    supabase.from('network_setup').select('gam_setup_status, gam_network_code').eq('id', 1).maybeSingle(),
+  ]);
 
-  if (error) {
+  if (pubRes.error) {
     return (
       <main className="max-w-6xl mx-auto px-6 py-12">
         <div className="text-sm text-red-700 bg-red-50 border border-red-200 px-4 py-3 rounded">
-          Errore caricamento clienti: {error.message}
+          Errore caricamento clienti: {pubRes.error.message}
         </div>
       </main>
     );
   }
+  const publishers = pubRes.data;
+  const networkStatus = netRes.data?.gam_setup_status || 'not_started';
+  const networkCode = netRes.data?.gam_network_code;
 
   return (
     <main className="max-w-6xl mx-auto px-6 py-10">
+      {/* Banner stato Network Advlink */}
+      {networkStatus !== 'operational' && (
+        <div className="mb-6 bg-amber-50 border border-amber-200 rounded-lg px-5 py-3 flex items-center justify-between gap-4 flex-wrap">
+          <div>
+            <div className="text-sm font-semibold text-amber-900">
+              Network Advlink: {NETWORK_STATUS_LABEL[networkStatus] || networkStatus}
+            </div>
+            <div className="text-xs text-amber-800 mt-0.5">
+              Il network GAM Advlink non è ancora operativo — tutti i publisher servono inventory dentro concessionario precedente.
+            </div>
+          </div>
+          <Link href="/admin/network" className="text-sm font-medium text-amber-900 hover:text-amber-950 bg-white border border-amber-300 px-3 py-1.5 rounded-md">
+            Configura Network →
+          </Link>
+        </div>
+      )}
+      {networkStatus === 'operational' && networkCode && (
+        <div className="mb-6 bg-emerald-50 border border-emerald-200 rounded-lg px-5 py-2.5 flex items-center justify-between gap-4 flex-wrap text-xs">
+          <div className="text-emerald-900">
+            Network Advlink operativo · GAM code <span className="font-mono">{networkCode}</span>
+          </div>
+          <Link href="/admin/network" className="text-emerald-800 hover:text-emerald-950 font-medium">
+            Gestisci →
+          </Link>
+        </div>
+      )}
+
       <div className="flex items-center justify-between mb-8 gap-4 flex-wrap">
         <div>
           <h1 className="text-2xl font-semibold text-slate-900">Clienti</h1>
