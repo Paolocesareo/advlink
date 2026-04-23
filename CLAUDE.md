@@ -23,9 +23,28 @@ Per fase 1 bastano questi due. Per fase 2 (GAM + Prebid) valuteremo se creare un
 
 ---
 
-## Fase corrente: 1 — Sito pubblico vetrina
+## Stato attuale
 
-Solo marketing. Niente piattaforma tecnica, niente dashboard, niente integrazione GAM. Quelle sono fasi 2-3.
+- **Fase 1 (M1-M5)** — completata. Sito pubblico vetrina online (home + editori + inserzionisti + chi-siamo + contatti con Resend).
+- **Sprint iter.2 (M6-M11)** — completato. Dati OPS Idea integrati, pagine legali (privacy, cookie), OG image, structured data, security headers (commit `2c7e0eb`).
+- **Bridge Fase 2 (M12-M16)** — completato. Monorepo predisposto con route groups `(marketing)` / `(dashboard)`, `/api/health`, `/api/ingest` placeholder, scaffolding Supabase, documentazione (`ARCHITECTURE.md`). Il codice è pronto a ospitare la dashboard senza averla ancora costruita.
+
+## Prossimi passi
+
+**Fase 2** — da avviare solo dopo input bloccanti di Paolo (vedi `docs/03-spec-evolutiva-claude-code.md` §7):
+
+1. GAM Network Code OPS Idea
+2. GAM Service Account JSON (credenziali API)
+3. Supabase project credentials (URL, anon key, service role key)
+4. Lista testate per pilota (la più piccola)
+5. Conferma palette finale (rosso editoriale già ok)
+6. Conferma commission rate Advlink (proposta 22%)
+
+Finché questi input non arrivano, il repo resta in stato "Fase 1 + bridge". Per contesto tecnico completo sull'architettura target vedi `ARCHITECTURE.md`.
+
+## Fase 1 (storico — completata)
+
+Solo marketing. Sito statico vetrina. Niente piattaforma tecnica, niente dashboard, niente integrazione GAM.
 
 ## Stack vincolante
 
@@ -46,7 +65,9 @@ Advlink non si presenta come "ennesima ad-tech". Il messaging deve essere chiaro
 
 Tono: martech, sobrio, professionale. Mai "agenzia creativa", mai "rivoluzionario".
 
-## Task iniziale
+## Task iniziale (storico — completato)
+
+> Questa sezione resta come riferimento: descrive il setup iniziale del repo Next.js, ora completo. Per il prossimo step vedi "Prossimi passi" sopra.
 
 1. **Inizializza** Next.js 14 nella root del repo (App Router, TypeScript, Tailwind, ESLint)
 2. **Setup base:**
