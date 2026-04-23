@@ -49,6 +49,37 @@ const principles: ReadonlyArray<Principle> = [
   },
 ];
 
+type Package = {
+  name: string;
+  description: string;
+  bullets: ReadonlyArray<string>;
+};
+
+const packages: ReadonlyArray<Package> = [
+  {
+    name: 'Lombardia Premium Local',
+    description:
+      'Copertura sulle testate lombarde indipendenti, per audience qualificato nel bacino più ricco del paese.',
+    bullets: ['15 testate', 'Audience qualificato', 'CPM €8-12'],
+  },
+  {
+    name: 'Italia Centrale Network',
+    description:
+      'Reach estesa su 7 regioni italiane e 4 capoluoghi: Roma, Firenze, Torino, Venezia.',
+    bullets: [
+      '30 testate',
+      '4 capoluoghi · 7 regioni',
+      'CPM €6-15',
+    ],
+  },
+  {
+    name: 'Toscana Brand Safe',
+    description:
+      'Selezione toscana su testate di prossimità con lettori medio-alti e contesti brand safe certificati.',
+    bullets: ['9 testate', 'Target medio-alto', 'CPM €7-10'],
+  },
+];
+
 export default function InserzionistiPage() {
   return (
     <>
@@ -108,6 +139,61 @@ export default function InserzionistiPage() {
               misurabili, questo inventory è un territorio ancora poco
               sfruttato e particolarmente efficiente sul costo per risultato.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Pacchetti regionali */}
+      <section className="bg-white">
+        <div className="mx-auto max-w-6xl px-4 py-16 md:px-6 md:py-24">
+          <h2 className="text-3xl font-bold tracking-tight text-slate-900 md:text-4xl">
+            Pacchetti regionali
+          </h2>
+          <p className="mt-4 max-w-2xl text-slate-600">
+            Piani media costruiti sulle geografie e verticali dove la nostra
+            rete editoriale ha più profondità.
+          </p>
+
+          <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
+            {packages.map((pack) => (
+              <article
+                key={pack.name}
+                className="flex flex-col rounded-xl border border-slate-200 bg-white p-6"
+              >
+                <h3 className="text-lg font-semibold text-brand-800">
+                  {pack.name}
+                </h3>
+                <p className="mt-3 text-sm text-slate-600">
+                  {pack.description}
+                </p>
+                <ul className="mt-5 space-y-2 text-sm text-slate-700">
+                  {pack.bullets.map((bullet) => (
+                    <li key={bullet} className="flex items-start gap-2">
+                      <span
+                        aria-hidden="true"
+                        className="mt-2 inline-block h-1.5 w-1.5 rounded-full bg-brand-800"
+                      />
+                      <span>{bullet}</span>
+                    </li>
+                  ))}
+                </ul>
+                <Link
+                  href="/contatti?p=inserzionisti"
+                  className="mt-6 inline-flex items-center text-sm font-semibold text-brand-700 hover:text-brand-900"
+                >
+                  Richiedi proposta su misura →
+                </Link>
+              </article>
+            ))}
+          </div>
+
+          <div className="mt-12 flex justify-center">
+            <Link
+              href="/contatti?p=inserzionisti"
+              className="inline-flex items-center justify-center rounded-md bg-brand-800 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-brand-900 focus:outline-none focus:ring-2 focus:ring-brand-700 focus:ring-offset-2"
+            >
+              Richiedi proposta su misura
+            </Link>
           </div>
         </div>
       </section>

@@ -29,8 +29,8 @@ const sections: ReadonlyArray<FooterSection> = [
   {
     title: 'Legale',
     links: [
-      { href: '#', label: 'Privacy' },
-      { href: '#', label: 'Cookie' },
+      { href: '/privacy', label: 'Privacy' },
+      { href: '/cookie', label: 'Cookie' },
     ],
   },
   {

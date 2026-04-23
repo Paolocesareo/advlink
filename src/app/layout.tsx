@@ -10,7 +10,6 @@ const inter = Inter({
   display: 'swap',
 });
 
-// TODO: generare immagine Open Graph definitiva a /public/og.png (1200x630)
 export const metadata: Metadata = {
   metadataBase: new URL('https://advlink.it'),
   title: {
@@ -27,21 +26,12 @@ export const metadata: Metadata = {
     siteName: 'Advlink',
     locale: 'it_IT',
     type: 'website',
-    images: [
-      {
-        url: '/og.png',
-        width: 1200,
-        height: 630,
-        alt: 'Advlink — Da editori, per editori',
-      },
-    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Advlink — Da editori, per editori',
     description:
       'Tecnologia pubblicitaria nata dentro un gruppo editoriale italiano.',
-    images: ['/og.png'],
   },
 };
 

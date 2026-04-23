@@ -72,11 +72,48 @@ const valueProps: ReadonlyArray<ValueProp> = [
     description:
       'Seguiamo il segmento che i grandi player trascurano, con attenzione a volumi e margini di ogni testata.',
   },
+  {
+    title: 'Commissione esplicita e dichiarata, sotto la media di mercato',
+    description:
+      'La trattenuta è scritta nel contratto, non nascosta nella catena SSP: una cifra inferiore alla media di settore.',
+  },
+  {
+    title: 'Pagamenti a 30 giorni — non a 90 come la concorrenza',
+    description:
+      'Flusso di cassa prevedibile: il revenue maturato viene liquidato a 30 giorni, non dopo trimestri.',
+  },
 ];
+
+type Metric = {
+  value: string;
+  label: string;
+};
+
+const metrics: ReadonlyArray<Metric> = [
+  { value: '150+', label: 'testate gestite' },
+  { value: '7', label: 'regioni' },
+  { value: '4', label: 'capoluoghi' },
+  { value: '60+', label: 'comuni' },
+];
+
+const organizationJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Advlink',
+  description: 'Piattaforma pubblicitaria per editori italiani',
+  url: 'https://advlink.it',
+  logo: 'https://advlink.it/opengraph-image',
+};
 
 export default function HomePage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+      />
+
       {/* Hero */}
       <section className="bg-slate-50">
         <div className="mx-auto max-w-5xl px-4 py-20 text-center md:px-6 md:py-28">
@@ -87,6 +124,9 @@ export default function HomePage() {
             Tecnologia pubblicitaria nata dentro un gruppo editoriale italiano.
             Trasparenza, integrazione nativa Google Ad Manager, focus
             sull’editoria locale e regionale.
+          </p>
+          <p className="mx-auto mt-4 max-w-2xl text-base font-medium text-slate-700 md:text-lg">
+            Network di oltre 100 testate, 7 regioni italiane, 4 capoluoghi.
           </p>
           <div className="mt-10 flex flex-wrap justify-center gap-4">
             <Link
@@ -136,13 +176,31 @@ export default function HomePage() {
           <h2 className="text-center text-3xl font-bold tracking-tight text-slate-900 md:text-4xl">
             Perché Advlink
           </h2>
-          <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-3">
+          <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             {valueProps.map((item) => (
               <div key={item.title}>
                 <h3 className="text-lg font-semibold text-slate-900">
                   {item.title}
                 </h3>
                 <p className="mt-2 text-slate-600">{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Metriche numeriche */}
+      <section className="bg-slate-900 text-white">
+        <div className="mx-auto max-w-6xl px-4 py-16 md:px-6 md:py-20">
+          <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
+            {metrics.map((metric) => (
+              <div key={metric.label} className="text-center">
+                <p className="text-4xl font-bold tracking-tight text-white md:text-5xl">
+                  {metric.value}
+                </p>
+                <p className="mt-2 text-sm uppercase tracking-wide text-slate-300 md:text-base">
+                  {metric.label}
+                </p>
               </div>
             ))}
           </div>
