@@ -435,6 +435,21 @@ function SiteRow({ site: initial, onSave, onRemove, disabled }: {
           <MiniField label="MANAGERDOMAIN ads.txt" value={site.manager_domain} onChange={v => set('manager_domain', v)} placeholder="advlink.it" mono />
         </div>
       </div>
+      <div className="mt-2">
+        <label className="block text-[10px] font-medium text-slate-500 mb-0.5 uppercase tracking-wide">
+          Note testata
+          {site.notes && site.notes.length > 0 && (
+            <span className="ml-2 text-emerald-700 normal-case">· {site.notes.length} caratteri salvati</span>
+          )}
+        </label>
+        <textarea
+          value={site.notes ?? ''}
+          onChange={e => set('notes', e.target.value)}
+          rows={3}
+          placeholder="Audit tecnico, baseline metriche, CMS, wrapper attivi, decisioni operative su questa testata..."
+          className="w-full px-2 py-1 text-xs border border-slate-300 rounded bg-white focus:border-brand-700 focus:outline-none focus:ring-1 focus:ring-brand-700 font-mono"
+        />
+      </div>
     </div>
   );
 }
